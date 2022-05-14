@@ -14,7 +14,12 @@ void SimpleStat<E>::append(E val)
   {
     head = n;
     current = head;
+    min = val;
     return;
+  }
+  if (val < this->min)
+  {
+    this->min = val;
   }
   current->next = n;
   current = current->next;
@@ -29,4 +34,10 @@ void SimpleStat<E>::print()
     std::cout << current->element << " ";
     current = current->next;
   }
+}
+
+template <typename E>
+double SimpleStat<E>::get_min()
+{
+    return min;
 }
