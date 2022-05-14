@@ -8,6 +8,6 @@ int main()
     l.append(3.3);
     l.append(4.10);
     std::cout << "Min is: " << l.get_min() << std::endl;
-    l.print();
+    l.check_data();
     return 1;
 }

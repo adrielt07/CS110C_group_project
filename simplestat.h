@@ -8,6 +8,8 @@ template <typename E>
 class SimpleStat {
   private:
     LinkNode<E> *current, *head;
+    int size;
+    double total;
     double min;
 
   public:
@@ -15,6 +17,7 @@ class SimpleStat {
     void print();
     void append(E val);
     double get_min();
+    void check_data(); // prints size, total, min, mean, etc.
 };
 
 
