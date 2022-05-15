@@ -7,6 +7,24 @@ SimpleStat<E>::SimpleStat()
 }
 
 template <typename E>
+SimpleStat<E>::SimpleStat(E *val)
+{
+  current = head = NULL;
+  for (int i = 0; i < 5; i++)
+  {
+    this->append(val[i]);
+  }
+}
+
+template <typename E>
+SimpleStat<E>::SimpleStat(std::vector<E> &vec)
+{
+  current = head = NULL;
+  for(int i : vec)
+    this->append(i);
+}
+
+template <typename E>
 void SimpleStat<E>::append(E val)
 {
   LinkNode<E> *n = new LinkNode<E>(val);

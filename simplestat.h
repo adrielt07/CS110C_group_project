@@ -14,6 +14,8 @@ class SimpleStat {
 
   public:
     SimpleStat();
+    SimpleStat(E *val);
+    SimpleStat(std::vector<E> &vec);
     void print();
     void append(E val);
     double get_min();
