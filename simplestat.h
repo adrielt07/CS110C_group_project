@@ -8,8 +8,8 @@ template <typename E>
 class SimpleStat {
   private:
     LinkNode<E> *current, *head;
-    int size;
-    double total;
+    int size = 0;
+    double total = 0;
     double min;
     double mean;
     double max;
@@ -17,9 +17,10 @@ class SimpleStat {
   public:
     // Constructors
     SimpleStat();
-    SimpleStat(E *val);
+    SimpleStat(E *val, int size);
     SimpleStat(std::vector<E> &vec);
-    
+    SimpleStat(std::set<E> &s);
+
     // Getters
     double get_min();
     double get_mean();

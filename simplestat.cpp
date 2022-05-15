@@ -7,10 +7,10 @@ SimpleStat<E>::SimpleStat()
 }
 
 template <typename E>
-SimpleStat<E>::SimpleStat(E *val)
+SimpleStat<E>::SimpleStat(E *val, int size)
 {
   current = head = NULL;
-  for (int i = 0; i < 5; i++) // We need to account for the size of array
+  for (int i = 0; i < size; i++)
   {
     this->append(val[i]);
   }
@@ -20,7 +20,15 @@ template <typename E>
 SimpleStat<E>::SimpleStat(std::vector<E> &vec)
 {
   current = head = NULL;
-  for(int i : vec)
+  for(double i : vec)
+    this->append(i);
+}
+
+template <typename E>
+SimpleStat<E>::SimpleStat(std::set<E> &s)
+{
+  current = head = NULL;
+  for(double i : s)
     this->append(i);
 }
 
@@ -33,8 +41,10 @@ void SimpleStat<E>::append(E val)
     head = n;
     current = head;
     min = val;
-    total = val;
-    size = 1;
+    max = val;
+    mean = val / 1;
+    total += val;
+    size += 1;
     return;
   }
   this->update_data(val);
