@@ -10,7 +10,7 @@ template <typename E>
 SimpleStat<E>::SimpleStat(E *val)
 {
   current = head = NULL;
-  for (int i = 0; i < 5; i++)
+  for (int i = 0; i < 5; i++) // We need to account for the size of array
   {
     this->append(val[i]);
   }
@@ -37,12 +37,7 @@ void SimpleStat<E>::append(E val)
     size = 1;
     return;
   }
-  if (val < this->min)
-  {
-    this->min = val;
-  }
-  size += 1;
-  total += val;
+  this->update_data(val);
   current->next = n;
   current = current->next;
 }
@@ -70,4 +65,23 @@ void SimpleStat<E>::check_data()
     std::cout << "Total: " << total << std::endl;
     std::cout << "Size: " << size << std::endl;
     std::cout << "Min: " << min << std::endl;
+    std::cout << "Max: " << max << std::endl;
+    std::cout << "Mean: " << mean << std::endl;
+}
+
+template <typename E>
+void SimpleStat<E>::update_data(E val)
+{
+  this->total += val;
+  this->size += 1;
+
+  this->mean = total / size;
+  if (val < this->min)
+  {
+    this->min = val;
+  }
+  if (val > this->max)
+  {
+    this->max = val;
+  }
 }

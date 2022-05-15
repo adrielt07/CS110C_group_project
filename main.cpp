@@ -18,7 +18,7 @@ int main()
     // **** TEST CONSTRUCTOR FOR VECTOR AND ARRAY **** //
     // Test an array
 
-    double arr_int [5] = { 16, 2, 77, 40, 12071 }; 
+    double arr_int [5] = { 16, 2, 77, 40, 30 }; 
     SimpleStat<double> l2(arr_int);
     std::cout << "\n< Check l2 data >" << std::endl;
     l2.check_data();

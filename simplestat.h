@@ -11,14 +11,26 @@ class SimpleStat {
     int size;
     double total;
     double min;
+    double mean;
+    double max;
 
   public:
+    // Constructors
     SimpleStat();
     SimpleStat(E *val);
     SimpleStat(std::vector<E> &vec);
-    void print();
-    void append(E val);
+    
+    // Getters
     double get_min();
+    double get_mean();
+    double get_max();
+
+    // Modifiers
+    void append(E val);
+
+    // Helpers
+    void update_data(E val);
+    void print();
     void check_data(); // prints size, total, min, mean, etc.
 };
 
