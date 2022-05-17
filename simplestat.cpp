@@ -64,25 +64,50 @@ void SimpleStat<E>::print()
 }
 
 template <typename E>
-double SimpleStat<E>::get_min()
+E SimpleStat<E>::get_min()
 {
     return min;
 }
 
 template <typename E>
-double SimpleStat<E>::get_mean()
+E SimpleStat<E>::get_max()
+{
+    return min;
+}
+
+template <typename E>
+E SimpleStat<E>::get_mean()
 {
     return mean;
 }
+
+template <typename E>
+E SimpleStat<E>::operator[](int index)
+{
+  int i;
+  LinkNode<E> *runner = head;
+
+  if (index > size - 1)
+  {
+    throw std::out_of_range("Out of range");
+  }
+
+  for (int i = 0; i < index; i++)
+  {
+    runner = runner->next;
+  }
+  return runner->element;
+}
+
 
 template <typename E>
 void SimpleStat<E>::check_data()
 {
     std::cout << "Total: " << total << std::endl;
     std::cout << "Size: " << size << std::endl;
-    std::cout << "Min: " << min << std::endl;
-    std::cout << "Max: " << max << std::endl;
-    std::cout << "Mean: " << mean << std::endl;
+    std::cout << "Min: " << this->get_min() << std::endl;
+    std::cout << "Max: " << this->get_max() << std::endl;
+    std::cout << "Mean: " << this->get_mean() << std::endl;
 }
 
 template <typename E>

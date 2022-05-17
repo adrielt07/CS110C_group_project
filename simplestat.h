@@ -22,10 +22,14 @@ class SimpleStat {
     SimpleStat(std::set<E> &s);
 
     // Getters
-    double get_min();
-    double get_mean();
-    double get_max();
-    double get_SD();
+    E get_min();
+    E get_mean();
+    E get_max();
+    E get_SD();
+    int length_total();
+    int length_unique();
+    int search();
+    E operator[](int index);
 
     // Modifiers
     void append(E val);
