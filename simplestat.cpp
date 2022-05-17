@@ -3,13 +3,13 @@
 template <typename E>
 SimpleStat<E>::SimpleStat()
 {
-  current = head = NULL;
+  end = head = NULL;
 }
 
 template <typename E>
 SimpleStat<E>::SimpleStat(E *val, int size)
 {
-  current = head = NULL;
+  end = head = NULL;
   for (int i = 0; i < size; i++)
   {
     this->append(val[i]);
@@ -19,7 +19,7 @@ SimpleStat<E>::SimpleStat(E *val, int size)
 template <typename E>
 SimpleStat<E>::SimpleStat(std::vector<E> &vec)
 {
-  current = head = NULL;
+  end = head = NULL;
   for(double i : vec)
     this->append(i);
 }
@@ -27,7 +27,7 @@ SimpleStat<E>::SimpleStat(std::vector<E> &vec)
 template <typename E>
 SimpleStat<E>::SimpleStat(std::set<E> &s)
 {
-  current = head = NULL;
+  end = head = NULL;
   for(double i : s)
     this->append(i);
 }
@@ -39,7 +39,7 @@ void SimpleStat<E>::append(E val)
   if (head == NULL)
   {
     head = n;
-    current = head;
+    end = head;
     min = val;
     max = val;
     mean = val / 1;
@@ -48,18 +48,18 @@ void SimpleStat<E>::append(E val)
     return;
   }
   this->update_data(val);
-  current->next = n;
-  current = current->next;
+  end->next = n;
+  end = end->next;
 }
 
 template <typename E>
 void SimpleStat<E>::print()
 {
-  current = head;
-  while(current != NULL)
+  end = head;
+  while(end != NULL)
   {
-    std::cout << current->element << " ";
-    current = current->next;
+    std::cout << end->element << " ";
+    end = end->next;
   }
 }
 

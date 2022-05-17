@@ -7,7 +7,7 @@
 template <typename E> 
 class SimpleStat {
   private:
-    LinkNode<E> *current, *head;
+    LinkNode<E> *end, *head;
     int size = 0;
     double total = 0;
     double min;
@@ -25,6 +25,7 @@ class SimpleStat {
     double get_min();
     double get_mean();
     double get_max();
+    double get_SD();
 
     // Modifiers
     void append(E val);
