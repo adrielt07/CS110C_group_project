@@ -70,6 +70,12 @@ double SimpleStat<E>::get_min()
 }
 
 template <typename E>
+double SimpleStat<E>::get_mean()
+{
+    return mean;
+}
+
+template <typename E>
 void SimpleStat<E>::check_data()
 {
     std::cout << "Total: " << total << std::endl;
