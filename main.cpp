@@ -12,7 +12,7 @@ int main()
     l.append(3.3);
     l.append(4.10);
     std::cout << "< Check l data >" << std::endl;
-    std::cout << " Index test: " << l[4] << std::endl;
+    std::cout << " Index test: " << l[3] << std::endl;
     l.check_data();
 
 
