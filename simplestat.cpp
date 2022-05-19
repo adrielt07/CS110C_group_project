@@ -53,6 +53,64 @@ void SimpleStat<E>::append(E val)
 }
 
 template <typename E>
+void SimpleStat<E>::removem(E val, int m)
+{
+    //Find number of available val's
+    int i = 0;
+    int n = 0;
+    int g;
+    end = head;
+    while(end != NULL){
+        if(val == end->element){
+            g = i;
+            i += 1;
+            n += 1;
+            end = end->next;
+        }
+        else{
+            i += 1;
+            end = end->next;
+        }
+    }
+
+    // Remove element(s)
+    end=head;
+    LinkNode<E> *temp=head;
+    LinkNode<E> *prev=head;
+    int x = 0;
+    i = 0;
+    if(m <= n){
+        while(x < m){
+            if(i == g && end == head){
+                head = head->next;
+                end = head;
+                i +=1 ;
+                x +=1 ;
+            }
+            else if(i == g && end != head){
+                temp = end;
+                prev = end;
+                prev->next = end->next;
+                end = end->next;
+                delete temp;
+                i += 1;
+                x += 1;
+            }
+            else{
+                prev = end;
+                end = end->next;
+                i += 1;
+            }
+        
+        }
+    // Update Data
+        }
+    else
+        std::cout << "Insufficient amount of elements\n";
+
+    }
+
+template <typename E>
 void SimpleStat<E>::print()
 {
   end = head;
