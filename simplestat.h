@@ -33,6 +33,7 @@ class SimpleStat {
 
     // Modifiers
     void append(E val);
+    void removem(E val, int m);
 
     // Helpers
     void update_data(E val);
