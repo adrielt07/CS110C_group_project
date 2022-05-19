@@ -53,6 +53,15 @@ void SimpleStat<E>::append(E val)
 }
 
 template <typename E>
+void SimpleStat<E>:: empty(){
+    while(head != NULL) {
+            end = head;
+            head = head->next;
+            delete end;
+    }
+}
+
+template <typename E>
 void SimpleStat<E>::print()
 {
   end = head;
