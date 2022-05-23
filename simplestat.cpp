@@ -53,13 +53,133 @@ void SimpleStat<E>::append(E val)
 }
 
 template <typename E>
-void SimpleStat<E>:: empty(){
-    while(head != NULL) {
+void SimpleStat<E>::removem(E val, int m)
+{
+    //Find number of available specified elements
+    int i = 0;
+    int n = 0;
+    int y = 0;
+    std::vector<int> elements(m);
+    end=head;
+    while(end!=NULL)
+    {
+        if(val == end->element)
+        {
+            elements[y] = i;
+            i++;
+            n++;
+            y++;
+            end = end->next;
+        }
+        else{
+            i++;
+            end = end->next;
+        }
+    }
+
+    // Remove element(s)
+    end=head;
+    LinkNode<E> *temp=head;
+    LinkNode<E> *prev=head;
+    int x = 0;
+    i = 0;
+    if(m<=n)
+    {
+        while(x<m)
+        {
+            if(i==elements[x] && end==head)
+            {
+                head=head->next;
+                end=head;
+                prev=head;
+                i+=1;
+                x+=1;
+            }
+            else if(i==elements[x] && end!=head)
+            {
+                temp=end;
+                prev->next=end->next;
+                end=end->next;
+                delete temp;
+                i+=1;
+                x+=1;
+            }
+            else{
+                if(end->next != NULL)
+                {
+                    prev=end;
+                    end=end->next;
+                    i+=1;
+                }
+                else
+                    i++;
+            }
+        }
+
+        //Update Data
+        this->total = (total - (val*m));
+        this->size = (size - m);
+        this->mean = total/size;
+
+        if(val==this->min)
+        {
+            end=head;
+            this->min=end->element;
+            while(end!=NULL)
+            {
+                if(end->element<=this->min)
+                {
+                    this->min=end->element;
+                    end=end->next;
+                }
+                else
+                    end=end->next;
+            }
+
+        }
+        else if(val==this->max)
+        {
+            end=head;
+            this->max=end->element;
+            while(end!=NULL)
+            {
+                if(end->element>=this->max)
+                {
+                    this->max=end->element;
+                    end=end->next;
+                }
+                else
+                    end=end->next;
+            }
+        }
+
+
+
+
+
+    }
+    else
+       std::cout << "Insufficient amount of elements\n";
+
+}
+
+template <typename E>
+void SimpleStat<E>:: empty()
+{
+    while(head != NULL)
+    {
             end = head;
             head = head->next;
             delete end;
     }
+    this->min=NULL;
+    this->max=NULL;
+    this->total=NULL;
+    this->mean=NULL;
+    this->size=NULL;
+
 }
+
 
 template <typename E>
 void SimpleStat<E>::print()
