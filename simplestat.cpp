@@ -172,12 +172,11 @@ void SimpleStat<E>:: empty()
             head = head->next;
             delete end;
     }
-    this->min=NULL;
-    this->max=NULL;
-    this->total=NULL;
-    this->mean=NULL;
-    this->size=NULL;
-
+    this->min=0;
+    this->max=0;
+    this->total=0;
+    this->mean=0;
+    this->size=0;
 }
 
 
