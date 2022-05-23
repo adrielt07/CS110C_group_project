@@ -200,7 +200,7 @@ E SimpleStat<E>::get_min()
 template <typename E>
 E SimpleStat<E>::get_max()
 {
-    return min;
+    return max;
 }
 
 template <typename E>
