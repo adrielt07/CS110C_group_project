@@ -210,6 +210,68 @@ E SimpleStat<E>::get_mean()
 }
 
 template <typename E>
+E SimpleStat<E>::get_SD()
+{
+    return SD;
+}
+
+template <typename E>
+int SimpleStat<E>::length_total()
+{
+    return size;
+}
+
+
+
+template <typename E>
+int SimpleStat<E>::length_unique()
+{
+    return unique_set().size();
+}
+
+
+
+template <typename E>
+void SimpleStat<E>::search(double val)
+{
+    int rep_first = -1;
+    int rep_total = 0;
+    int count = 0;
+    LinkNode<E>* curr = head;
+    while (curr != NULL) {
+        count++;
+        if (curr->element == val) {
+            rep_total += 1;
+            if (rep_first < 0) {
+                rep_first = count;
+            }
+        }
+        curr = curr->next;
+    }
+    if (rep_first < 0) {
+        std::cout << val << " does not exist in this data set." << std::endl;
+    }
+    else {
+        std::cout << val << " first appears in the data set at " << rep_first << " with " << rep_total << " total repetitions." << std::endl;
+    }
+}
+
+
+
+template <typename E>
+std::set<E> SimpleStat<E>::unique_set()
+{
+    std::set<E> unique;
+    LinkNode<E>* curr = head;
+    while (curr != NULL) {
+        unique.insert(curr->element);
+        curr = curr->next;
+    }
+    return unique;
+
+}
+
+template <typename E>
 E SimpleStat<E>::operator[](int index)
 {
   int i;
@@ -229,13 +291,59 @@ E SimpleStat<E>::operator[](int index)
 
 
 template <typename E>
+void SimpleStat<E>::calc_SD()
+{
+    double deviation;
+    double variance = 0;
+    LinkNode<E>* curr = head;
+    while (curr != NULL) {
+        deviation = (curr->element - this->get_mean());
+        variance += (deviation * deviation);
+        curr = curr->next;
+    }
+    variance = variance / this->length_total();
+    this->SD = sqrt(variance);
+}
+
+
+
+template <typename E>
+double SimpleStat<E>::sqrt(double val)
+{
+    double base = val / 2;
+    double temp = 0;
+
+    while (base != temp) {
+        temp = base;
+        base = ((val / temp) + temp) / 2;
+    }
+    return base;
+}
+
+
+
+template <typename E>
+void SimpleStat<E>::print_unique()
+{
+    std::set<E> unique = unique_set();
+    std::cout << "Unique numbers: ";
+    for (auto it = unique.begin(); it != unique.end(); it++) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+}
+
+template <typename E>
 void SimpleStat<E>::check_data()
 {
     std::cout << "Total: " << total << std::endl;
-    std::cout << "Size: " << size << std::endl;
+    std::cout << "Length: " << this->length_total() << std::endl;
     std::cout << "Min: " << this->get_min() << std::endl;
     std::cout << "Max: " << this->get_max() << std::endl;
     std::cout << "Mean: " << this->get_mean() << std::endl;
+    std::cout << "Standard Deviation: " << this->get_SD() << std::endl;
+    std::cout << "# of Unique Elements: " << this->length_unique() << std::endl;
+    this->print_unique();
 }
 
 template <typename E>
@@ -253,4 +361,5 @@ void SimpleStat<E>::update_data(E val)
   {
     this->max = val;
   }
+  calc_SD();
 }

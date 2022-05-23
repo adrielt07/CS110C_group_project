@@ -13,6 +13,7 @@ class SimpleStat {
     double min;
     double mean;
     double max;
+    double SD;
 
   public:
     // Constructors
@@ -28,15 +29,19 @@ class SimpleStat {
     E get_SD();
     int length_total();
     int length_unique();
-    int search();
+    std::set<E> unique_set();
+    void search(double val);
     E operator[](int index);
 
     // Modifiers
     void append(E val);
     void removem(E val, int m);
     void empty();
+    void calc_SD();
 
     // Helpers
+    double sqrt(double val);
+    void print_unique();
     void update_data(E val);
     void print();
     void check_data(); // prints size, total, min, mean, etc.
