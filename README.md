@@ -25,7 +25,7 @@ Methods name | Description | return
 `removem` | Remove m number of a given data element | `void`
 `empty` | Deletes all data | `void`
 `search` | Returns the location of the first occurrence and repetition | `set`
-`operator []` | Overloaded [], so you can access the nth index data | `Template <int> or <double>`
+`operator []` | Overloaded [], so you can access the nth index data | `double`
 `feed` | takes any c++ containers and adds the data at the end of the linked list(work in progress) | `void`
 `unique_set` | Returns all unique elements | `set`
 `get_mean` | Returns the mean value in the current entire data set | `double`
