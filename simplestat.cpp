@@ -61,6 +61,7 @@ void SimpleStat<E>::append(E val, bool recalc_SD)
   end = end->next;
 }
 
+
 template <typename E>
 void SimpleStat<E>::removem(E val, int m)
 {
@@ -167,6 +168,7 @@ void SimpleStat<E>::removem(E val, int m)
 
 }
 
+
 template <typename E>
 void SimpleStat<E>:: empty()
 {
@@ -195,11 +197,15 @@ void SimpleStat<E>::print()
   }
 }
 
+/* Getters */
+
+
 template <typename E>
 E SimpleStat<E>::get_min()
 {
     return min;
 }
+
 
 template <typename E>
 E SimpleStat<E>::get_max()
@@ -207,17 +213,20 @@ E SimpleStat<E>::get_max()
     return max;
 }
 
+
 template <typename E>
 E SimpleStat<E>::get_mean()
 {
     return mean;
 }
 
+
 template <typename E>
 E SimpleStat<E>::get_SD()
 {
     return SD;
 }
+
 
 template <typename E>
 int SimpleStat<E>::length_total()
@@ -226,13 +235,11 @@ int SimpleStat<E>::length_total()
 }
 
 
-
 template <typename E>
 int SimpleStat<E>::length_unique()
 {
     return unique_set().size();
 }
-
 
 
 template <typename E>
@@ -261,6 +268,8 @@ void SimpleStat<E>::search(double val)
 }
 
 
+/* End Getters */
+
 
 template <typename E>
 std::set<E> SimpleStat<E>::unique_set()
@@ -274,6 +283,7 @@ std::set<E> SimpleStat<E>::unique_set()
     return unique;
 
 }
+
 
 template <typename E>
 E SimpleStat<E>::operator[](int index)
@@ -311,7 +321,6 @@ void SimpleStat<E>::calc_SD()
 }
 
 
-
 template <typename E>
 double SimpleStat<E>::sqrt(double val)
 {
@@ -326,7 +335,6 @@ double SimpleStat<E>::sqrt(double val)
 }
 
 
-
 template <typename E>
 void SimpleStat<E>::print_unique()
 {
@@ -337,6 +345,7 @@ void SimpleStat<E>::print_unique()
     }
     std::cout << std::endl;
 }
+
 
 template <typename E>
 void SimpleStat<E>::check_data()
@@ -351,13 +360,13 @@ void SimpleStat<E>::check_data()
     this->print_unique();
 }
 
+
 template <typename E>
 void SimpleStat<E>::update_data(E val)
 {
   this->total += val;
   this->size += 1;
   this->mean = total / size;
-
   if (val < this->min)
   {
     this->min = val;
