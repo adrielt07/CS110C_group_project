@@ -54,6 +54,6 @@ int main()
 ```
 
 ### Authors
+* Adriel Tolentino | [GitHub](https://github.com/adrielt07)
 * Cody Brinkmann | [GitHub](https://github.com/CodyBrinkmann)
 * Kellen Zheng | [GitHub](https://github.com/kellenzheng)
-* Adriel Tolentino | [GitHub](https://github.com/adrielt07)
