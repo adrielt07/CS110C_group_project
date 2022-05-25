@@ -34,7 +34,7 @@ class SimpleStat {
     E operator[](int index);
 
     // Modifiers
-    void append(E val);
+    void append(E val, bool recalc_SD=true);
     void removem(E val, int m);
     void empty();
     void calc_SD();

@@ -7,14 +7,16 @@ SimpleStat<E>::SimpleStat()
   end = head = NULL;
 }
 
+/* Constructor Iterators */
 template <typename E>
 SimpleStat<E>::SimpleStat(E *val, int size)
 {
   end = head = NULL;
   for (int i = 0; i < size; i++)
   {
-    this->append(val[i]);
+    this->append(val[i], false);
   }
+  calc_SD();
 }
 
 template <typename E>
@@ -22,7 +24,8 @@ SimpleStat<E>::SimpleStat(std::vector<E> &vec)
 {
   end = head = NULL;
   for(double i : vec)
-    this->append(i);
+    this->append(i, false);
+  calc_SD();
 }
 
 template <typename E>
@@ -30,11 +33,14 @@ SimpleStat<E>::SimpleStat(std::set<E> &s)
 {
   end = head = NULL;
   for(double i : s)
-    this->append(i);
+    this->append(i, false);
+  calc_SD();
 }
 
+/* End Constructor Iterators */
+
 template <typename E>
-void SimpleStat<E>::append(E val)
+void SimpleStat<E>::append(E val, bool recalc_SD)
 {
   LinkNode<E> *n = new LinkNode<E>(val);
   if (head == NULL)
@@ -49,6 +55,8 @@ void SimpleStat<E>::append(E val)
     return;
   }
   this->update_data(val);
+  if (recalc_SD == true)
+    this->calc_SD();
   end->next = n;
   end = end->next;
 }
@@ -153,11 +161,6 @@ void SimpleStat<E>::removem(E val, int m)
                     end=end->next;
             }
         }
-
-
-
-
-
     }
     else
        std::cout << "Insufficient amount of elements\n";
@@ -184,11 +187,11 @@ void SimpleStat<E>:: empty()
 template <typename E>
 void SimpleStat<E>::print()
 {
-  end = head;
-  while(end != NULL)
+  LinkNode<E>* curr = head;
+  while(curr != NULL)
   {
-    std::cout << end->element << " ";
-    end = end->next;
+    std::cout << curr->element << " " << std::endl;
+    curr = curr->next;
   }
 }
 
@@ -294,6 +297,7 @@ E SimpleStat<E>::operator[](int index)
 template <typename E>
 void SimpleStat<E>::calc_SD()
 {
+    std::cout << "Running SD" << std::endl;
     double deviation;
     double variance = 0;
     LinkNode<E>* curr = head;
@@ -352,8 +356,8 @@ void SimpleStat<E>::update_data(E val)
 {
   this->total += val;
   this->size += 1;
-
   this->mean = total / size;
+
   if (val < this->min)
   {
     this->min = val;
@@ -362,5 +366,4 @@ void SimpleStat<E>::update_data(E val)
   {
     this->max = val;
   }
-  calc_SD();
 }
