@@ -7,14 +7,16 @@ SimpleStat<E>::SimpleStat()
   end = head = NULL;
 }
 
+/* Constructor Iterators */
 template <typename E>
 SimpleStat<E>::SimpleStat(E *val, int size)
 {
   end = head = NULL;
   for (int i = 0; i < size; i++)
   {
-    this->append(val[i]);
+    this->append(val[i], false);
   }
+  calc_SD();
 }
 
 template <typename E>
@@ -22,7 +24,8 @@ SimpleStat<E>::SimpleStat(std::vector<E> &vec)
 {
   end = head = NULL;
   for(double i : vec)
-    this->append(i);
+    this->append(i, false);
+  calc_SD();
 }
 
 template <typename E>
@@ -30,11 +33,14 @@ SimpleStat<E>::SimpleStat(std::set<E> &s)
 {
   end = head = NULL;
   for(double i : s)
-    this->append(i);
+    this->append(i, false);
+  calc_SD();
 }
 
+/* End Constructor Iterators */
+
 template <typename E>
-void SimpleStat<E>::append(E val)
+void SimpleStat<E>::append(E val, bool recalc_SD)
 {
   LinkNode<E> *n = new LinkNode<E>(val);
   if (head == NULL)
@@ -49,9 +55,12 @@ void SimpleStat<E>::append(E val)
     return;
   }
   this->update_data(val);
+  if (recalc_SD == true)
+    this->calc_SD();
   end->next = n;
   end = end->next;
 }
+
 
 template <typename E>
 void SimpleStat<E>::removem(E val, int m)
@@ -153,16 +162,12 @@ void SimpleStat<E>::removem(E val, int m)
                     end=end->next;
             }
         }
-
-
-
-
-
     }
     else
        std::cout << "Insufficient amount of elements\n";
 
 }
+
 
 template <typename E>
 void SimpleStat<E>:: empty()
@@ -184,13 +189,16 @@ void SimpleStat<E>:: empty()
 template <typename E>
 void SimpleStat<E>::print()
 {
-  end = head;
-  while(end != NULL)
+  LinkNode<E>* curr = head;
+  while(curr != NULL)
   {
-    std::cout << end->element << " ";
-    end = end->next;
+    std::cout << curr->element << " " << std::endl;
+    curr = curr->next;
   }
 }
+
+/* Getters */
+
 
 template <typename E>
 E SimpleStat<E>::get_min()
@@ -198,11 +206,13 @@ E SimpleStat<E>::get_min()
     return min;
 }
 
+
 template <typename E>
 E SimpleStat<E>::get_max()
 {
     return max;
 }
+
 
 template <typename E>
 E SimpleStat<E>::get_mean()
@@ -210,11 +220,13 @@ E SimpleStat<E>::get_mean()
     return mean;
 }
 
+
 template <typename E>
 E SimpleStat<E>::get_SD()
 {
     return SD;
 }
+
 
 template <typename E>
 int SimpleStat<E>::length_total()
@@ -223,13 +235,11 @@ int SimpleStat<E>::length_total()
 }
 
 
-
 template <typename E>
 int SimpleStat<E>::length_unique()
 {
     return unique_set().size();
 }
-
 
 
 template <typename E>
@@ -258,6 +268,8 @@ void SimpleStat<E>::search(double val)
 }
 
 
+/* End Getters */
+
 
 template <typename E>
 std::set<E> SimpleStat<E>::unique_set()
@@ -271,6 +283,7 @@ std::set<E> SimpleStat<E>::unique_set()
     return unique;
 
 }
+
 
 template <typename E>
 E SimpleStat<E>::operator[](int index)
@@ -294,6 +307,7 @@ E SimpleStat<E>::operator[](int index)
 template <typename E>
 void SimpleStat<E>::calc_SD()
 {
+    std::cout << "Running SD" << std::endl;
     double deviation;
     double variance = 0;
     LinkNode<E>* curr = head;
@@ -305,7 +319,6 @@ void SimpleStat<E>::calc_SD()
     variance = variance / this->length_total();
     this->SD = sqrt(variance);
 }
-
 
 
 template <typename E>
@@ -322,7 +335,6 @@ double SimpleStat<E>::sqrt(double val)
 }
 
 
-
 template <typename E>
 void SimpleStat<E>::print_unique()
 {
@@ -333,6 +345,7 @@ void SimpleStat<E>::print_unique()
     }
     std::cout << std::endl;
 }
+
 
 template <typename E>
 void SimpleStat<E>::check_data()
@@ -347,12 +360,12 @@ void SimpleStat<E>::check_data()
     this->print_unique();
 }
 
+
 template <typename E>
 void SimpleStat<E>::update_data(E val)
 {
   this->total += val;
   this->size += 1;
-
   this->mean = total / size;
   if (val < this->min)
   {
@@ -362,5 +375,4 @@ void SimpleStat<E>::update_data(E val)
   {
     this->max = val;
   }
-  calc_SD();
 }
