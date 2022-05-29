@@ -52,5 +52,7 @@ int main()
     std::cout << "\n< Check l4 data after running empty() >" << std::endl;
     l4.empty();
     l4.check_data();
+
+    // Just a test
     return 0;
 }
