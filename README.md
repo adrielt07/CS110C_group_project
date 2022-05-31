@@ -37,19 +37,34 @@ Methods name | Description | return
 ## Example Usage
 ```
 #include <iostream>
-#include "simplestat.cpp"
+#include "simple_stat.h"
 
 int main()
 {
-    // *** TEST Default Constructor *** //
-    SimpleStat<double> l;
-    l.append(16.5);
-    l.append(2.5);
-    l.append(3.3);
-    l.append(4.10);
-    std::cout << "< Check l data >" << std::endl;
-    std::cout << " Index test: " << l[3] << std::endl;
-    l.check_data();
+    // Test std::array
+    std::array<double, 10> arr{ 16.5, 2.2, 77.9, 40.15, 30, 40.15, 52, 39, 16.5, 16.5 };
+    Simple_stat<double> l5(arr);
+    std::cout << "\n Check l5 data >" << std::endl;
+    l5.check_data();
+    l5.search(16.5);
+
+    std::cout << "\n Testing l5 getters >" << std::endl;
+    std::cout << "Length: " << l5.length_total() << std::endl;
+    std::cout << "Min: " << l5.get_min() << std::endl;
+    std::cout << "Max: " << l5.get_max() << std::endl;
+    std::cout << "Mean: " << l5.get_mean() << std::endl;
+    std::cout << "Standard Deviation: " << l5.get_SD() << std::endl;
+    std::cout << "# of Unique Elements: " << l5.length_unique() << std::endl;
+    std::pair<int, int> l5_pair = l5.search(16.5);
+    std::cout << "Searching for 16.5: " << std::endl;
+    std::cout << "found at index: " << l5_pair.first << "Number of repitions: " << l5_pair.second << std::endl;
+
+    std::cout << "\nRemove 2.2 which was the min: " << std::endl;
+    l5.removem(2.2, 1);
+    std::cout << "New min: " << l5.get_min() << std::endl;
+    std::cout << "New Mean: " << l5.get_mean() << std::endl;
+    std::cout << "New Standard Deviation: " << l5.get_SD() << std::endl;
+
 }
 ```
 
