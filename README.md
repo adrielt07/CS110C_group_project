@@ -12,10 +12,10 @@
 File Name | Description
 --- | ---
 `LinearStructures\*` | Examples of different data structures (such as stack, double linked list, queue, etc)
-`linkenode.h` | Base singly linked list structure used by simplestat
-`simplestat.h` | SimpleStat class declarations
-`simplestat.cpp` | SimpleStat implementations
-`main.cpp` | Used to test out SimpleStat's functions (feel free to change or play around with this file)
+`linkenode.h` | Base singly linked list structure used by Simple_stat
+`simple_stat.h` | Simple_stat class declarations
+`main.cpp` | Used to test out Simple_stat's functions (feel free to change or play around with this file)
+`archived` | Contains old files used as a reference (class declaration and implementation are in two separate files - doesn't meet the project's requirements so had to archived it).
 
 
 ### Methods Available
@@ -24,9 +24,9 @@ Methods name | Description | return
 `append` | Takes a number and add it at the end of the linked list | `void`
 `removem` | Remove m number of a given data element | `void`
 `empty` | Deletes all data | `void`
-`search` | Returns the location of the first occurrence and number of repetition | `pair`
+`search` | Returns the location of the first occurrence and number of repetition | `pair<int=index location, int=# of repititions>`
 `operator []` | Overloaded [], so you can access the nth index data | `double`
-`feed` | takes any c++ containers and adds the data at the end of the linked list(work in progress) | `void`
+`feed` | takes any c++ containers and adds the data at the end of the linked list | `void`
 `unique_set` | Returns all unique elements | `set`
 `get_mean` | Returns the mean value in the current entire data set | `double`
 `get_SD` | Returns the standard deviation in the current entire data set | `double`
