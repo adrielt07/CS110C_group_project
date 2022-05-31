@@ -30,7 +30,7 @@ class SimpleStat {
     int length_total();
     int length_unique();
     std::set<E> unique_set();
-    void search(double val);
+    std::pair<E, E> search(double val);
     E operator[](int index);
 
     // Modifiers
