@@ -45,9 +45,15 @@ int main()
     s.insert(4.3);
     s.insert(6.1);
     SimpleStat<double> l4(s);
-    std::cout << "\n< Check l4 data >" << std::endl;
+    std::cout << "\n Check l4 data >" << std::endl;
     l4.check_data();
-    l4.search(10);
+
+    std::cout << "\n Feed l4 with vect data" << std::endl;
+    l4.feed(vect);
+
+    std::cout << "\n Re-checking l4 data >" << std::endl;
+    l4.check_data();
+
 
     std::cout << "\n< Check l4 data after running empty() >" << std::endl;
     l4.empty();
