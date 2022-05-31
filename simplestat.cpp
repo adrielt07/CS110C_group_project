@@ -250,7 +250,7 @@ std::pair<E, E> SimpleStat<E>::search(double val)
     std::pair<E, E> num_reps;
     int rep_first = -1;
     int rep_total = 0;
-    int count = 0;
+    int count = -1;
     LinkNode<E>* curr = head;
     while (curr != NULL) {
         count++;

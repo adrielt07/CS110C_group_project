@@ -24,7 +24,7 @@ Methods name | Description | return
 `append` | Takes a number and add it at the end of the linked list | `void`
 `removem` | Remove m number of a given data element | `void`
 `empty` | Deletes all data | `void`
-`search` | Returns the location of the first occurrence and repetition | `set`
+`search` | Returns the location of the first occurrence and number of repetition | `pair`
 `operator []` | Overloaded [], so you can access the nth index data | `double`
 `feed` | takes any c++ containers and adds the data at the end of the linked list(work in progress) | `void`
 `unique_set` | Returns all unique elements | `set`
