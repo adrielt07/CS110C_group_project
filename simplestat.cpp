@@ -245,11 +245,12 @@ int SimpleStat<E>::length_unique()
 
 
 template <typename E>
-void SimpleStat<E>::search(double val)
+std::pair<E, E> SimpleStat<E>::search(double val)
 {
+    std::pair<E, E> num_reps;
     int rep_first = -1;
     int rep_total = 0;
-    int count = 0;
+    int count = -1;
     LinkNode<E>* curr = head;
     while (curr != NULL) {
         count++;
@@ -265,8 +266,11 @@ void SimpleStat<E>::search(double val)
         std::cout << val << " does not exist in this data set." << std::endl;
     }
     else {
-        std::cout << val << " first appears in the data set at " << rep_first << " with " << rep_total << " total repetitions." << std::endl;
+        num_reps.first = rep_first;
+        num_reps.second = rep_total;
+        std::cout << num_reps.first << ", " << num_reps.second << std::endl;
     }
+    return num_reps;
 }
 
 
@@ -378,6 +382,7 @@ void SimpleStat<E>::update_data(E val)
     this->max = val;
   }
 }
+
 
 template <typename E>
 template <typename T>
