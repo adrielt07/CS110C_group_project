@@ -313,7 +313,6 @@ E SimpleStat<E>::operator[](int index)
 template <typename E>
 void SimpleStat<E>::calc_SD()
 {
-    std::cout << "Running SD" << std::endl;
     double deviation;
     double variance = 0;
     LinkNode<E>* curr = head;
@@ -386,9 +385,9 @@ void SimpleStat<E>::update_data(E val)
 
 template <typename E>
 template <typename T>
-SimpleStat<E>::feed(T val)
+void SimpleStat<E>::feed(T val)
 {
-    for(double i : val)
-        this->append(i);
-  calc_SD();
+    for(auto it = val.begin(); it != val.end(); ++it)
+        this->append(*it);
+    this->calc_SD();
 }
