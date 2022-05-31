@@ -302,19 +302,19 @@ class Simple_stat {
 
         E operator[](int index)
         {
-        int i;
-        LinkNode<E> *runner = head;
+            LinkNode<E> *runner = head;
 
-        if (index > size - 1)
-        {
-            throw std::out_of_range("Out of range");
-        }
+            if (index > size - 1 || index < 0)
+            {
+                std::cout << "ERROR: Index out of range. Returning ";
+                return -1;
+            }
 
-        for (int i = 0; i < index; i++)
-        {
-            runner = runner->next;
-        }
-        return runner->element;
+            for (int i = 0; i < index; i++)
+            {
+                runner = runner->next;
+            }
+            return runner->element;
         }
 
 

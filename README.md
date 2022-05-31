@@ -55,16 +55,22 @@ int main()
     std::cout << "Mean: " << l5.get_mean() << std::endl;
     std::cout << "Standard Deviation: " << l5.get_SD() << std::endl;
     std::cout << "# of Unique Elements: " << l5.length_unique() << std::endl;
+    std::cout << "Access index 3: " << l5[3] << std::endl;
+
     std::pair<int, int> l5_pair = l5.search(16.5);
     std::cout << "Searching for 16.5: " << std::endl;
     std::cout << "found at index: " << l5_pair.first << "Number of repitions: " << l5_pair.second << std::endl;
 
     std::cout << "\nRemove 2.2 which was the min: " << std::endl;
     l5.removem(2.2, 1);
+    std::cout << "New Length: " << l5.length_total() << std::endl;
     std::cout << "New min: " << l5.get_min() << std::endl;
     std::cout << "New Mean: " << l5.get_mean() << std::endl;
     std::cout << "New Standard Deviation: " << l5.get_SD() << std::endl;
+    std::cout << "New # of Unique Elements: " << l5.length_unique() << std::endl;
+    std::cout << "New Access index 3: " << l5[3] << std::endl;
 
+    return 0;
 }
 ```
 
