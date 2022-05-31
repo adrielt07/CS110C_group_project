@@ -130,6 +130,7 @@ void SimpleStat<E>::removem(E val, int m)
         this->total = (total - (val*m));
         this->size = (size - m);
         this->mean = total/size;
+        this->calc_SD();
 
         if(val==this->min)
         {
@@ -183,6 +184,7 @@ void SimpleStat<E>:: empty()
     this->total=0;
     this->mean=0;
     this->size=0;
+    this->SD=0;
 }
 
 
@@ -379,4 +381,12 @@ void SimpleStat<E>::update_data(E val)
   {
     this->max = val;
   }
+}
+
+template <typename T>
+SimpleStat<E>::feed(T val)
+{
+    for(double i : val)
+        this->append(i);
+  calc_SD();
 }

@@ -38,6 +38,8 @@ class SimpleStat {
     void removem(E val, int m);
     void empty();
     void calc_SD();
+    template <typename T>
+    void feed(T val);
 
     // Helpers
     double sqrt(double val);
