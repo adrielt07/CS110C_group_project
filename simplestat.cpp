@@ -379,6 +379,7 @@ void SimpleStat<E>::update_data(E val)
   }
 }
 
+template <typename E>
 template <typename T>
 SimpleStat<E>::feed(T val)
 {
