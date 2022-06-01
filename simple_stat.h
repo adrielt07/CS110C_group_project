@@ -366,7 +366,6 @@ class Simple_stat {
             std::cout << "Mean: " << this->get_mean() << std::endl;
             std::cout << "Standard Deviation: " << this->get_SD() << std::endl;
             std::cout << "# of Unique Elements: " << this->length_unique() << std::endl;
-            this->print_unique();
         }
 
 
