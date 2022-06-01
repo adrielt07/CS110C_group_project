@@ -76,7 +76,7 @@ int main()
     std::cout << "# of Unique Elements: " << l5.length_unique() << std::endl;
     std::pair<int, int> l5_pair = l5.search(16.5);
     std::cout << "Searching for 16.5: " << std::endl;
-    std::cout << "found at index: " << l5_pair.first << "Number of repitions: " << l5_pair.second << std::endl;
+    std::cout << "found at index: " << l5_pair.first << "\nNumber of repitions: " << l5_pair.second << std::endl;
 
     std::cout << "\nRemove 2.2 which was the min: " << std::endl;
     l5.removem(2.2, 1);

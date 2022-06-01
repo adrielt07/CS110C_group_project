@@ -27,7 +27,7 @@ class Simple_stat {
         {
             end = head = NULL;
             for(auto it = arr.begin(); it != arr.end(); ++it)
-                this->append(*it);
+                this->append(*it, false);
             this->calc_SD();
         }
 
