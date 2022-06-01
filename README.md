@@ -16,6 +16,7 @@ File Name | Description
 `simple_stat.h` | Simple_stat class declarations
 `main.cpp` | Used to test out Simple_stat's functions (feel free to change or play around with this file)
 `archived` | Contains old files used as a reference (class declaration and implementation are in two separate files - doesn't meet the project's requirements so had to archived it).
+`CS110C_group_project_UML.pdf` | Class UML diagram
 
 
 ### Methods Available
